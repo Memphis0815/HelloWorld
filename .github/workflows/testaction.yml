@@ -19,6 +19,11 @@ jobs:
                     reaction: eyes
                 env:
                     GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+            
+            -   run: echo ${{ testmessage.status }}
+
+            -   run: echo 'found it'
+                if: steps.check.outputs.triggered == 'true'
     
     echo-variable:
         runs-on: ubuntu-latest
