@@ -7,10 +7,10 @@ on:
         types: [created]
 
 jobs:
-    test-pull-request-message:
+    testmessage:
         runs-on: ubuntu-latest
         outputs:
-            deploy-status: ${{ steps.check.outputs.triggered }}
+            status: ${{ steps.check.outputs.triggered }}
         steps: 
             -   uses: khan/pull-request-comment-trigger@master
                 id: check
@@ -22,6 +22,6 @@ jobs:
     
     echo-variable:
         runs-on: ubuntu-latest
-        needs: [test-pull-request-message]
+        needs: [testmessage]
         steps:
-            - run: echo ${{ needs.test-pull-request-message.deploy-status }}                
+            - run: echo ${{ needs.testmessage.status }}                
