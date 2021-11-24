@@ -7,11 +7,11 @@ on:
         types: [created]
 
 jobs:
-    build-and-push-images:
+    test-pull-request-message:
         runs-on: ubuntu-latest
-        steps:
-            -   uses: actions/checkout@v2
-
+        outputs:
+            deploy-status: ${{ steps.check.outputs.triggered }}
+        steps: 
             -   uses: khan/pull-request-comment-trigger@master
                 id: check
                 with:
@@ -19,6 +19,9 @@ jobs:
                     reaction: rocket
                 env:
                     GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-
-            -   run: 'echo Found it!'
-                if: steps.check.outputs.triggered == 'true'
+    
+    echo-variable:
+        runs-on: ubuntu-latest
+        needs: [test-pull-request-message]
+        steps:
+            - run: echo ${{ needs.test-pull-request-message.deploy-status }}                
