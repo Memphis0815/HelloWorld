@@ -22,6 +22,8 @@ jobs:
 
             -   run: echo 'found it'
                 if: steps.check.outputs.triggered == 'true'
+            
+            -   run: echo ${{ steps.check.outputs.triggered }}
     
     echo-variable:
         runs-on: ubuntu-latest
