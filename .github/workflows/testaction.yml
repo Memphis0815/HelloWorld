@@ -14,7 +14,8 @@ jobs:
         runs-on: ubuntu-latest
         steps: 
             - run: echo ${{ github.event.label.name }}
-            
+            - run: echo achtion trigger on create lable
+
     testlabel:
         runs-on: ubuntu-latest
         if: ${{ github.event.label.name == 'build_preview' }}
