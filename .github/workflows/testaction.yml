@@ -16,7 +16,7 @@ jobs:
                 id: check
                 with:
                     trigger: 'build_preview'
-                    reaction: rocket
+                    reaction: eyes
                 env:
                     GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
     
