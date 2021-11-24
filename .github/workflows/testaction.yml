@@ -1,6 +1,7 @@
 name: Test Action
 
 on:
+    push:
     label:
         types: [ created ]
     # pull_request:
