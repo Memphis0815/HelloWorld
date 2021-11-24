@@ -1,12 +1,20 @@
 name: Test Action
 
 on:
-    pull_request:
-        types: [ opened, synchronize ]
-        branches-ignore:
-            - master
+    label:
+        types: [ created ]
+    # pull_request:
+    #     types: [ opened, synchronize ]
+    #     branches-ignore:
+    #         - master
 
 jobs:
+    testlabel:
+        runs-on: ubuntu-latest
+        if: ${{ github.event.label.name == 'build_preview' }}
+        steps:
+            - uses: actions/checkout@v2
+            - run: echo test label work
     testmessage:
         runs-on: ubuntu-latest
         outputs:
