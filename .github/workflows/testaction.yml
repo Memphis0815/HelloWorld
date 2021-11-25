@@ -12,11 +12,11 @@ jobs:
     echolable:
         runs-on: ubuntu-latest
         steps: 
-            - run: echo "${{ github.event.pull_request.label.*.name }}"
+            - run: echo "${{ github.pull_request.labels.*.name }}"
 
     testlabel:
         runs-on: ubuntu-latest
-        if: ${{ contains(github.event.pull_request.label.*.name, 'build_preview') }}
+        if: ${{ contains(github.pull_request.labels.*.name, 'build_preview') }}
         steps:
             - uses: actions/checkout@v2
             - run: echo test label work
