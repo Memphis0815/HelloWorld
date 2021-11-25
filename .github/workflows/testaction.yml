@@ -10,8 +10,8 @@ on:
     
     pull_request:
          types: [ opened, synchronize ]
-         branches:
-            - '!staging'
+        #  branches:
+        #     - '!staging'
            # - '!master'
 
 jobs:
