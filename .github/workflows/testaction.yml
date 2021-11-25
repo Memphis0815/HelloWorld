@@ -12,7 +12,7 @@ jobs:
     echolable:
         runs-on: ubuntu-latest
         steps: 
-            - run: echo "${{ github.event.label.name }}"
+            - run: echo "${{ github.event.label.*.name }}"
 
     testlabel:
         runs-on: ubuntu-latest
