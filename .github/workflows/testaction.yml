@@ -1,12 +1,8 @@
 name: Test Action
 
 on:
-    label:
-        types: [ created, edited ]
-    
     pull_request:
         types: [ assigned, labeled ]
-
 
 jobs:
     echolable:
