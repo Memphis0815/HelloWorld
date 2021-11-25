@@ -10,9 +10,9 @@ on:
     
     pull_request:
          types: [ opened, synchronize ]
-         branches-ignore:
-            - 'staging'
-            - 'master'
+         branches:
+            - '!staging'
+            - '!master'
 
 jobs:
     echolable:
