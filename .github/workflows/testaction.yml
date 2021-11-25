@@ -12,12 +12,12 @@ jobs:
     echolable:
         runs-on: ubuntu-latest
         steps: 
-            - run: echo ${{ github.event.pull_request.label.name }}
+            - run: echo ${{ github.event.label.name }}
             - run: echo achtion trigger on create lable
 
     testlabel:
         runs-on: ubuntu-latest
-        if: ${{ github.event.pull_request.labels.name == 'build_preview' }}
+        if: ${{ github.event.pull_request.label.name == 'build_preview' }}
         steps:
             - uses: actions/checkout@v2
             - run: echo test label work
