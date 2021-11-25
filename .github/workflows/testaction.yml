@@ -1,12 +1,32 @@
 name: Test Action
 
 on:
+    # push:
+    #     branches-ignore:
+    #         - 'staging'
+    #         - 'master'
+    label:
+        types: [ created ]
+    
     pull_request:
-        types: [ opened, synchronize ]
-        branches-ignore:
-            - master
+         types: [ opened, synchronize ]
+        #  branches:
+        #     - '!staging'
+           # - '!master'
 
 jobs:
+    echolable:
+        runs-on: ubuntu-latest
+        steps: 
+            - run: echo ${{ github.event.label.name }}
+            - run: echo achtion trigger on create lable
+
+    testlabel:
+        runs-on: ubuntu-latest
+        if: ${{ github.event.label.name == 'build_preview' }}
+        steps:
+            - uses: actions/checkout@v2
+            - run: echo test label work
     testmessage:
         runs-on: ubuntu-latest
         outputs:
