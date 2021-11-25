@@ -8,11 +8,9 @@ on:
     label:
         types: [ created ]
     
-    # pull_request:
-    #      types: [ opened, synchronize ]
-        #  branches:
-        #     - '!staging'
-           # - '!master'
+    pull_request:
+        types: [ labeled ]
+
 
 jobs:
     echolable:
