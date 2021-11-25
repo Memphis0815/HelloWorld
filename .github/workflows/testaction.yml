@@ -1,10 +1,10 @@
 name: Test Action
 
 on:
-    # push:
-    #     branches-ignore:
-    #         - 'staging'
-    #         - 'master'
+    push:
+        branches-ignore:
+            - 'staging'
+            - 'master'
     label:
         types: [ created ]
     
