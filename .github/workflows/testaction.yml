@@ -9,6 +9,8 @@ jobs:
         steps: 
             -   name: Create version file
                 run: |
+                    ls -a
+                    pwd 
                     echo "Build: ${{ github.run_number }} " >> public/version.txt
                     echo "Build time: $(date)" >> public/version.txt
     # testmessage:
