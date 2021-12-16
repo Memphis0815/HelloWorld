@@ -2,29 +2,24 @@ name: Test Action
 
 on:
     push:
-        branches-ignore:
-            - 'staging'
-            - 'master'
-    label:
-        types: [ created, edited ]
-    
-    pull_request:
-        types: [ labeled ]
-
 
 jobs:
     echolable:
         runs-on: ubuntu-latest
         steps: 
-            - run: echo ${{ github.event.label.name }}
-            - run: echo achtion trigger on create lable
+            -   uses: actions/checkout@v2
 
-    testlabel:
-        runs-on: ubuntu-latest
-        if: ${{ github.event.pull_request.labels.name == 'build_preview' }}
-        steps:
-            - uses: actions/checkout@v2
-            - run: echo test label work
+            -   name: Create version file
+                run: |
+                    ls -a
+                    pwd 
+                    echo "Build: ${{ github.run_number }} " >> public/version.txt
+                    echo "Build time: $(date)" >> public/version.txt
+                    git remote set-url origin ${{secrets.MA_TOKEN}}
+                    git add .
+                    git commit -m "Auto create version"
+                    git fetch origin testingbranch
+                    git push origin HEAD:testingbranch
     # testmessage:
     #     runs-on: ubuntu-latest
     #     outputs:
