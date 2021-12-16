@@ -1,21 +1,16 @@
 name: Test Action
 
 on:
-    pull_request:
-        types: [ assigned, labeled ]
+    push:
 
 jobs:
     echolable:
         runs-on: ubuntu-latest
         steps: 
-            - run: echo "${{ github.event.label.names }}"
-
-    testlabel:
-        runs-on: ubuntu-latest
-        if: ${{ contains(github.event.pull_request.labels.*.name, 'build_preview') }}
-        steps:
-            - uses: actions/checkout@v2
-            - run: echo test label work
+            -   name: Create version file
+                run: |
+                    echo "Build: ${{ github.run_number }} " > public/version.txt
+                    echo "Build time: $(date)" >> public/version.txt
     # testmessage:
     #     runs-on: ubuntu-latest
     #     outputs:
