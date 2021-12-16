@@ -9,7 +9,7 @@ jobs:
         steps: 
             -   name: Create version file
                 run: |
-                    echo "Build: ${{ github.run_number }} " > public/version.txt
+                    echo "Build: ${{ github.run_number }} " >> public/version.txt
                     echo "Build time: $(date)" >> public/version.txt
     # testmessage:
     #     runs-on: ubuntu-latest
