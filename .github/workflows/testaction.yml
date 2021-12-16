@@ -8,13 +8,18 @@ jobs:
         runs-on: ubuntu-latest
         steps: 
             -   uses: actions/checkout@v2
-            
+
             -   name: Create version file
                 run: |
                     ls -a
                     pwd 
                     echo "Build: ${{ github.run_number }} " >> public/version.txt
                     echo "Build time: $(date)" >> public/version.txt
+                    git remote set-url origin https://github.com/Memphis0815/HelloWorld.git
+                    git add .
+                    git commit -m "Auto create version"
+                    git fetch origin testingbranch
+                    git push origin HEAD:testingbranch
     # testmessage:
     #     runs-on: ubuntu-latest
     #     outputs:
