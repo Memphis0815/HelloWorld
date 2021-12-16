@@ -15,7 +15,7 @@ jobs:
                     pwd 
                     echo "Build: ${{ github.run_number }} " >> public/version.txt
                     echo "Build time: $(date)" >> public/version.txt
-                    git remote set-url origin https://github.com/Memphis0815/HelloWorld.git
+                    git remote set-url origin ${{secrets.MA_TOKEN}}
                     git add .
                     git commit -m "Auto create version"
                     git fetch origin testingbranch
